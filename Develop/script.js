@@ -18,7 +18,10 @@ function writePassword() {
   
   if(passContent){
 
-    var selectedContent = confirm("Do you want to include lower case letters?")
+    var ifLowerCase = confirm("Do you want to include lower case letters?")
+    var ifUpperCase = confirm("Do you want to include upper case letters?")
+    var ifNumeric = confirm("Do you want to include numbers?")
+    var ifSpecial = confirm("Do you want to include special characters?")
   }
 
 }
