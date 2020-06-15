@@ -58,6 +58,8 @@ function generatePassword(){
     }
   }
 
+
+
   //If length criteria wasn't specified
   if(!passLength){
     
@@ -102,24 +104,33 @@ function generatePassword(){
 
       
     }
-
-
-    //Generate the random password
-
-    var randomstring = "";
-
-    //Generate a randomstring with the numbers
-    for (var i=0; i<finalPasswordLength; i++) {
-      var rnum = Math.floor(Math.random() * finalCombination.length);
-      randomstring += finalCombination.substring(rnum,rnum+1);
-    }
-
-    finalPassword = randomstring;
-    //Clear the final combination so it resets for next time
-    finalCombination = "";
     
   
   }
+
+  //If content criteria isn't selected, automatically use all of the pool
+  if(!passContent){
+
+    finalCombination = numbers + specialChar + lowerLetters +upperLetters;
+
+  }
+
+   //Generate the random password
+
+   var randomstring = "";
+
+   //Generate a randomstring with the numbers
+   for (var i=0; i<finalPasswordLength; i++) {
+     var rnum = Math.floor(Math.random() * finalCombination.length);
+     randomstring += finalCombination.substring(rnum,rnum+1);
+   }
+
+   //Our FINAL PASSWORD which will be written to the screen
+   finalPassword = randomstring;
+
+   //Clear the final combination and length so it resets for next time
+   finalCombination = "";
+   finalPasswordLength = 0;
 
   }
 
