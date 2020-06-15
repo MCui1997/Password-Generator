@@ -10,8 +10,13 @@ function writePassword() {
   var passLength = confirm("Do you want to include password length criteria?");
   var passContent = confirm("Do you want to include password content criteria?");
 
-  if(passLength){
 
+  if(!passLength && !passContent){
+    alert("No password could be generated.");
+  }
+
+
+  if(passLength){
     var selectedLength = prompt("How long should your password be? (Limited between 18-128 characters");
   }
   
