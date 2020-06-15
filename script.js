@@ -13,7 +13,7 @@ var finalPasswordLength = 0;
 
 // Create the strings of characters that will be used to generate the password
 var numbers = "1234567890";
-var specialChar = " !#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+var specialChar = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
 var lowerLetters = "abcdefghijklmnopqrstuvwyxz";
 var upperLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var finalCombination = "";
@@ -35,6 +35,9 @@ function writePassword() {
 // This function generates the actual password
 function generatePassword(){
 
+  //Clear Final Password just in case there's leftover text
+  finalPassword = "";
+  
 // Ask two confirm prompts to determine which criteria should be included
   var passLength = confirm("Do you want to include password length criteria?");
   var passContent = confirm("Do you want to include password content criteria?");
@@ -43,6 +46,7 @@ function generatePassword(){
   // If neither criteria is selected, alert that no password could be generated
   if(!passLength && !passContent){
     alert("No password could be generated.");
+    return;
   }
 
 
