@@ -115,6 +115,9 @@ function generatePassword(){
     }
 
     finalPassword = randomstring;
+    //Clear the final combination so it resets for next time
+    finalCombination = "";
+    
   
   }
 
