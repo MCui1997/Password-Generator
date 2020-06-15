@@ -4,13 +4,15 @@ var generateBtn = document.querySelector("#generate");
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
+var finalPassword = "";
+
 // Write password to the #password input
 function writePassword() {
 
-  var password = generatePassword();
+  var password = (generatePassword());
   var passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
+  passwordText.value = (finalPassword);
 
 }
 
@@ -31,6 +33,9 @@ function generatePassword(){
   // If length was selected as criteria, then ask how many characters should be in the password
   if(passLength){
     var selectedLength = prompt("How long should your password be? (Limited between 18-128 characters");
+    
+    finalPassword = "Hello";
+  
   }
   
   
@@ -41,6 +46,7 @@ function generatePassword(){
     var ifUpperCase = confirm("Do you want to include upper case letters?")
     var ifNumeric = confirm("Do you want to include numbers?")
     var ifSpecial = confirm("Do you want to include special characters?")
+
   }
 
 
