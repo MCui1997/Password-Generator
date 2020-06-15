@@ -7,6 +7,16 @@ generateBtn.addEventListener("click", writePassword);
 // Write password to the #password input
 function writePassword() {
 
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+
+  passwordText.value = password;
+
+}
+
+// Generating the password
+function generatePassword(){
+
 // Ask two confirm prompts to determine which criteria should be included
   var passLength = confirm("Do you want to include password length criteria?");
   var passContent = confirm("Do you want to include password content criteria?");
@@ -32,6 +42,7 @@ function writePassword() {
     var ifNumeric = confirm("Do you want to include numbers?")
     var ifSpecial = confirm("Do you want to include special characters?")
   }
+
 
 
 
