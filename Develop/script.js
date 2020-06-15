@@ -58,6 +58,13 @@ function generatePassword(){
     }
   }
 
+  //If length criteria wasn't specified
+  if(!passLength){
+    
+    finalPasswordLength = Math.random() * (128 - 18) + 18;
+
+  }
+
   // If content was selected, then ask what types of characters the user wants
   if(passContent){
 
@@ -118,6 +125,6 @@ function generatePassword(){
   
   
 
-}
+
 
 
