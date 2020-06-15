@@ -1,3 +1,4 @@
+
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
@@ -5,6 +6,7 @@ var generateBtn = document.querySelector("#generate");
 generateBtn.addEventListener("click", writePassword);
 
 var finalPassword = "";
+
 
 // Write password to the #password input
 function writePassword() {
@@ -33,8 +35,19 @@ function generatePassword(){
   // If length was selected as criteria, then ask how many characters should be in the password
   if(passLength){
     var selectedLength = prompt("How long should your password be? (Limited between 18-128 characters");
+
     
-    finalPassword = "Hello";
+    // Create the numbers and the randomstring
+    var numbers = "1234567890";
+    var randomstring = "";
+
+    //Generate a randomstring with the numbers
+    for (var i=0; i<selectedLength; i++) {
+      var rnum = Math.floor(Math.random() * numbers.length);
+      randomstring += numbers.substring(rnum,rnum+1);
+    }
+
+    finalPassword = randomstring;
   
   }
   
@@ -50,7 +63,9 @@ function generatePassword(){
   }
 
 
-
+  
+  
+  
 
 }
 
