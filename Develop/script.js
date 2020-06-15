@@ -1,12 +1,23 @@
 
-// Assignment Code
+// Initialization
 var generateBtn = document.querySelector("#generate");
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
 var finalPassword = "";
+var finalPasswordLength = 0;
 
+// Create the numbers and the randomstring
+var numbers = "1234567890";
+var specialChar = " !#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+var lowerLetters = "abcdefghijklmnopqrstuvwyxz";
+var upperLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var finalCombination = "";
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+//Functions
 
 // Write password to the #password input
 function writePassword() {
@@ -35,22 +46,7 @@ function generatePassword(){
   // If length was selected as criteria, then ask how many characters should be in the password
   if(passLength){
     var selectedLength = prompt("How long should your password be? (Limited between 18-128 characters");
-
-    
-    // Create the numbers and the randomstring
-    var numbers = "1234567890";
-    var randomstring = "";
-
-    //Generate a randomstring with the numbers
-    for (var i=0; i<selectedLength; i++) {
-      var rnum = Math.floor(Math.random() * numbers.length);
-      randomstring += numbers.substring(rnum,rnum+1);
-    }
-
-    finalPassword = randomstring;
-  
-  }
-  
+    finalPasswordLength = selectedLength;
   
   // If content was selected, then ask what types of characters the user wants
   if(passContent){
@@ -59,6 +55,46 @@ function generatePassword(){
     var ifUpperCase = confirm("Do you want to include upper case letters?")
     var ifNumeric = confirm("Do you want to include numbers?")
     var ifSpecial = confirm("Do you want to include special characters?")
+
+    if(ifLowerCase){
+
+      finalCombination = (finalCombination +lowerLetters);
+
+    }
+
+    if(ifUpperCase){
+      
+      finalCombination = (finalCombination + upperLetters);
+
+    }
+
+    if(ifNumeric){
+
+      finalCombination = (finalCombination + numbers);
+      
+    }
+
+    if(ifSpecial){
+
+      finalCombination = (finalCombination + specialChar);
+
+      
+    }
+
+
+    //Generate the random password
+
+    var randomstring = "";
+
+    //Generate a randomstring with the numbers
+    for (var i=0; i<finalPasswordLength; i++) {
+      var rnum = Math.floor(Math.random() * finalCombination.length);
+      randomstring += finalCombination.substring(rnum,rnum+1);
+    }
+
+    finalPassword = randomstring;
+  
+  }
 
   }
 
