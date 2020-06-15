@@ -1,14 +1,17 @@
 
-// Initialization
+// Gets the generate button linked to the html
 var generateBtn = document.querySelector("#generate");
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
+
+//Initialization of all necesarry variables (Final Password and Length of Final Password)
+
 var finalPassword = "";
 var finalPasswordLength = 0;
 
-// Create the numbers and the randomstring
+// Create the strings of characters that will be used to generate the password
 var numbers = "1234567890";
 var specialChar = " !#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
 var lowerLetters = "abcdefghijklmnopqrstuvwyxz";
@@ -19,7 +22,7 @@ var finalCombination = "";
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //Functions
 
-// Write password to the #password input
+// This function takes the generated password and writes it to the page
 function writePassword() {
 
   var password = (generatePassword());
@@ -29,7 +32,7 @@ function writePassword() {
 
 }
 
-// Generating the password
+// This function generates the actual password
 function generatePassword(){
 
 // Ask two confirm prompts to determine which criteria should be included
@@ -47,7 +50,14 @@ function generatePassword(){
   if(passLength){
     var selectedLength = prompt("How long should your password be? (Limited between 18-128 characters");
     finalPasswordLength = selectedLength;
-  
+
+    //If the character limit is broken, shows message and exits
+    if(selectedLength <18 || selectedLength >128){
+      alert("No password could be generated due to improper length");
+      return;
+    }
+  }
+
   // If content was selected, then ask what types of characters the user wants
   if(passContent){
 
@@ -56,24 +66,29 @@ function generatePassword(){
     var ifNumeric = confirm("Do you want to include numbers?")
     var ifSpecial = confirm("Do you want to include special characters?")
 
+
+    //Adds lowercase options to final option of combinations
     if(ifLowerCase){
 
       finalCombination = (finalCombination +lowerLetters);
 
     }
 
+    //Adds uppercase options to final option of combinations
     if(ifUpperCase){
       
       finalCombination = (finalCombination + upperLetters);
 
     }
 
+    //Adds numeric options to final option of combinations
     if(ifNumeric){
 
       finalCombination = (finalCombination + numbers);
       
     }
 
+    //Adds speical char options to final option of combinations
     if(ifSpecial){
 
       finalCombination = (finalCombination + specialChar);
