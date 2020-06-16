@@ -80,9 +80,16 @@ function generatePassword(){
     var ifSpecial = confirm("Do you want to include special characters?")
 
 
+    //In case they want character content but don't pick any
+    if(!ifLowerCase && !ifUpperCase && !ifNumeric && !ifSpecial){
+      alert("No characters were selected so no password could be generated");
+      return;
+    }
+
     //Adds lowercase options to final option of combinations
     if(ifLowerCase){
 
+      alert("Lower case letters added");
       finalCombination = (finalCombination +lowerLetters);
 
     }
@@ -90,6 +97,7 @@ function generatePassword(){
     //Adds uppercase options to final option of combinations
     if(ifUpperCase){
       
+      alert("Upper case letters added");
       finalCombination = (finalCombination + upperLetters);
 
     }
@@ -97,6 +105,7 @@ function generatePassword(){
     //Adds numeric options to final option of combinations
     if(ifNumeric){
 
+      alert("Numbers added");
       finalCombination = (finalCombination + numbers);
       
     }
@@ -104,6 +113,7 @@ function generatePassword(){
     //Adds speical char options to final option of combinations
     if(ifSpecial){
 
+      alert("Special characters added");
       finalCombination = (finalCombination + specialChar);
 
       
